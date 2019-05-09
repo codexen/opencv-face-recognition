@@ -47,7 +47,7 @@ while(True):
 			layout = [
 				[sg.Text('Enter your name')],
 				[sg.InputText()],
-				[sg.Submit(), sg.Cancel()]
+				[sg.Submit(), sg.Cancel(), sg.Text('Loading', visible=False)]
 			]
 
 			event, values  = sg.Window('Everything bagel', layout, auto_size_text=True, default_element_size=(40, 1)).Read()
