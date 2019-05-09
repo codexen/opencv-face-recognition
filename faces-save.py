@@ -29,6 +29,9 @@ while(True):
 		roi_gray = gray[y:y+h, x:x+w] #(ycord_start, ycord_end)
 		roi_color = frame[y:y+h, x:x+w]
 
+		if not os.path.exists('images'):
+			os.makedirs('images')
+
 		if not os.path.exists('images/new'):
 			os.makedirs('images/new')
 		image_name = random_generator() + ".png"
