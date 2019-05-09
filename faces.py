@@ -4,7 +4,7 @@ import pickle
 
 face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read("trainner.yml")
+recognizer.read("./trainner.yml")
 
 labels = {"person_name" : 1}
 with open("labels.pickle", 'rb') as f:
@@ -25,8 +25,9 @@ while(True):
 
 		#recognize? deep learned model predict keras tensorflow pytorch scikit learn
 		id_, conf = recognizer.predict(roi_gray)
-		if conf>=45: # and conf <= 85:
-			print(id_)
+		# if conf>=45: # and conf <= 85:
+		if conf>=4 and conf <= 85:
+			# print(id_)
 			print(labels[id_])
 			font = cv2.FONT_HERSHEY_SIMPLEX
 			name = labels[id_]
@@ -34,8 +35,8 @@ while(True):
 			stroke = 2
 			cv2.putText(frame, name, (x,y), font, 1, color, stroke, cv2.LINE_AA)
 
-		img_item = "my-image.png"
-		cv2.imwrite(img_item, roi_color) #Save face to file
+		# img_item = "my-image.png"
+		# cv2.imwrite(img_item, roi_color) #Save face to file
 
 		# Draw rectangle around face
 		color = (255, 0, 0) #BGR 0-255
